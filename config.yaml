@@ -1,0 +1,13 @@
+configs:
+  use: 'office'
+  office:
+    mysql-user: 'etouches'
+    mysql-pass: 'pong'
+    provider: 'virtualbox'
+    base_ip: '10.0.15'
+    ansible_mgmt:  
+      os: 'ubuntu/trusty64'
+    boxes:
+      dev: 'ubuntu/trusty64' 
+      staging: 'ubuntu/trusty64' 
+      qa:  'ubuntu/trusty64' 

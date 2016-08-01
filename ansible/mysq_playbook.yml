@@ -1,0 +1,4 @@
+- hosts: all
+  become: yes
+  roles:
+     - { role: Rackspace_Automation.mysql, x: 42 }

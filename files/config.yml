@@ -1,0 +1,7 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  root_password: "test123test"
+  db: my_database
+  db_user: "etouches"
+  db_pass: "123"
