@@ -5,9 +5,12 @@ require 'yaml'
 
 current_dir    = File.dirname(File.expand_path(__FILE__))
 configs        = YAML.load_file("#{current_dir}/config.yaml")
-vagrant_config = configs['configs'][configs['configs']['use']] 
+config_type = configs['configs']['use']
+vagrant_config = configs['configs'][config_type]
 ansible_config = vagrant_config['ansible_mgmt'] 
 mgmt_ip = vagrant_config['base_ip'] + '.10'
+load_balancer = vagrant_config['load_balancer']
+lb_ip = vagrant_config['base_ip'] + '.11'
 boxes = vagrant_config['boxes']
 
 Vagrant.configure(2) do |config|
@@ -24,6 +27,16 @@ Vagrant.configure(2) do |config|
           vb.memory = "1024"
         end
     end
+  end
+
+  # create load balancer
+  config.vm.define :lb do |lb_config|
+      lb_config.vm.box = load_balancer['os']
+      lb_config.vm.hostname = "lb"
+      lb_config.vm.network :private_network, ip: lb_ip
+      lb_config.vm.provider vagrant_config['provider'] do |vb|
+        vb.memory = "512"
+      end
   end
 
   # create mgmt node

@@ -1,13 +1,20 @@
 configs:
-  use: 'office'
-  office:
-    mysql-user: 'etouches'
+  use: 'home'
+  home:
+    mysql-user: 'devuser'
     mysql-pass: 'pong'
     provider: 'virtualbox'
     base_ip: '10.0.15'
     ansible_mgmt:  
       os: 'ubuntu/trusty64'
+    load_balancer:
+      os: 'ubuntu/trusty64'
     boxes:
-      dev: 'ubuntu/trusty64' 
-      staging: 'ubuntu/trusty64' 
-      qa:  'ubuntu/trusty64' 
+      dev: 'ubuntu/trusty64'
+      rdb1: 'ubuntu/trusty64'
+      cdb: 'ubuntu/trusty64'
+      deploy: 'ubuntu/trusty64'
+      prod1: 'ubuntu/trusty64'
+      prod2: 'ubuntu/trusty64'
+      prod3: 'ubuntu/trusty64'
+      varnish: 'ubuntu/trusty64'

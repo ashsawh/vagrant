@@ -1,0 +1,9 @@
+- hosts: lb
+  become: yes
+
+  vars:
+    haproxy_backend_servers:
+      - name: varnish
+        address: 10.0.15.27:80
+  roles:
+    - { role: geerlingguy.haproxy }

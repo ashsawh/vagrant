@@ -1,0 +1,15 @@
+- hosts: dev
+  roles:
+     - { role: flyway }
+  vars:
+     - flyway_root: /opt/flyway
+     - flyway_config:
+        database:
+          host: rdb1
+          port: 3306
+          dbms: postgesql
+          name: employees
+          user: employees_user
+          password: emppw
+        schemas: empoyees
+     - flyway_locations: filesystem:/opt/migrations/

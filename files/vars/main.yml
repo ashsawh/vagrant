@@ -1,0 +1,26 @@
+mysql_root_password: password
+mysql_databases:
+  - name: sportsim
+    encoding: latin1
+    collation: latin1_general_ci
+  - name: employees
+    encoding: latin1
+    collation: latin1_general_ci
+mysql_users:
+  - name: sport_user
+    host: "%"
+    password: sportspw
+    priv: "sport_user.*:ALL"
+  - name: employees_user
+    host: "%"
+    password: emppw
+    priv: "employees.*:ALL"
+apache_vhosts:
+  - servername: "fantasycow.com"
+    documentroot: "/vagrant/www/employees/app/public"
+jenkins_hostname: jenkins.fantasycow.cow
+redis_port: 6379
+redis_bind_interface: 0.0.0.0
+varnish_secret: "14bac2e6-1e34-4770-8078-974373b76c90"
+varnish_default_backend_host: "10.0.15.20"
+varnish_default_backend_port: "80"

@@ -1,0 +1,11 @@
+- hosts: deploy
+  vars_files:
+    - vars/main.yml
+  vars:
+    jenkins_hostname: jenkins.fantasycow.com
+  roles:
+    - geerlingguy.redis
+    - geerlingguy.mysql
+    - hswong3i.bitbucket
+    - telusdigital.newrelic
+    - geerlingguy.jenkins

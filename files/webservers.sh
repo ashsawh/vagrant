@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # include parse_yaml function
 . parse_yaml.sh
 

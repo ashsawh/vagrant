@@ -1,0 +1,41 @@
+---
+- hosts: web:deploy
+  become: yes
+  gather_facts: yes
+  vars_files:
+    - vars/main.yml
+
+  pre_tasks:
+    - name: "Add repository for PHP 7.1."
+      apt_repository:
+        repo="ppa:ondrej/php"
+        update_cache=yes
+
+  roles:
+    - role: geerlingguy.php
+      php_version: "7.1"
+      php_packages:
+        - php7.1-common
+        - php7.1-cli
+        - php7.1-dev
+        - php7.1-fpm
+        - libpcre3-dev
+        - php7.1-gd
+        - php7.1-curl
+        - php7.1-imap
+        - php7.1-json
+        - php7.1-opcache
+        - php7.1-xml
+        - php7.1-mbstring
+        - php7.1-mysql
+        - php7.1-xdebug
+        - php7.1-apcu
+        - libapache2-mod-php7.1
+      php_date_timezone: "America/New_York"
+      php_mysql_package: php7.1-mysql
+
+    - geerlingguy.apache
+    - geerlingguy.git
+    - geerlingguy.pimpmylog
+    - geerlingguy.composer
+
